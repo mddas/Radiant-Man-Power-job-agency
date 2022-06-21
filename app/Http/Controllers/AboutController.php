@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Blog;
+use App\Models\About;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class AboutController extends Controller
 {
-    public function blog(){
-        return "this is front-end blog";
+    public function about(){
+        return "this is frontend";
     }
     public function index(){
-        return view("dashboard.blog")->with(["blogs"=>Blog::all()]);;
+        return view("dashboard.about")->with(["abouts"=>About::all()]);
     }
     public function add(){
-        return view("dashboard.add-blog");
+        return view("dashboard.add-about");
     }
     public function delete(){
         return "delete";
