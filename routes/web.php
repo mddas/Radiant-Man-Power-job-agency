@@ -68,14 +68,16 @@ Route::get("admin/delete-subcategory",[SubCategoryController::class,'delete']);
 Route::get('/contact',[ContactController::class,'contact']);//frontend
 Route::get("admin/contact",[ContactController::class,'index']);//backend
 Route::get("admin/add-contact",[ContactController::class,'add']);
+Route::post("admin/store-contact",[ContactController::class,'store']);
 Route::get("admin/delete-contact",[ContactController::class,'delete']);
 Route::get("admin/edit-contact",[ContactController::class,'edit']);
 
 
 //about us
-Route::get('/about',[AboutController::class,'about']);//frontend
+Route::get('/about-us',[AboutController::class,'about']);//frontend
 Route::get("admin/about",[AboutController::class,'index']);
 Route::get("admin/add-about",[AboutController::class,'add']);
+Route::post("admin/store-about",[AboutController::class,'store']);
 Route::get("admin/delete-about",[AboutController::class,'delete']);
 Route::get("admin/edit-about",[AboutController::class,'edit']);
 

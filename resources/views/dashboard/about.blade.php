@@ -37,8 +37,9 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sub category</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">About Us Title</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Contents</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Feature</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
         
                     </tr>
@@ -46,19 +47,19 @@
                   <tbody>
                     @foreach($abouts as $about)
                     <!---table row---->
-                    <tr>
+                    <tr id="{{$about['id']}}">
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../dashboard_assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd">
+                            <img src="/about/{{$about->image}}" class="avatar avatar-sm me-3" alt="xd">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">$category->name</h6>
+                            <h6 class="mb-0 text-sm">{{$about->title}}</h6>
                           </div>
                         </div>
                       </td>
                       <td>
-                            <span class="text-xs font-weight-bold">Null</span>
+                            <span class="text-xs font-weight-bold">{{$about->contents}}</span>
                           <!----
                         <div class="avatar-group mt-2">
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
@@ -77,6 +78,9 @@
                         ---->
 
                       </td>
+                      <td>
+                        <span class="text-xs font-weight-bold">{{$about->feature}}</span>
+                      </td>
                       <td class="align-middle text-center text-sm">
                           <div class="btn-group" style="position:static;">
                                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -84,7 +88,7 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="/admin/delete-category?id=$category['id']">Delete</a></li>
+                                    <li><button class="dropdown-item" onclick="deLete('{{$about->id}}','/admin/delete-about')" >Delete</button></li>
                                     <!---<li><a class="dropdown-item" href="#">Something else here</a></li>--->
                                 </ul>
                          </div>
