@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
-@section('index') 
+@section('index')
+    @include("home.header")
     @include("home.banner")
     @include("home.latest-jobs")
     @include("home.best-features")

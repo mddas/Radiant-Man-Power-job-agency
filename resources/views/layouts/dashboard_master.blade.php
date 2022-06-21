@@ -33,6 +33,12 @@
   <link href="../dashboard_assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../dashboard_assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
+  <!---script----->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -294,6 +300,68 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../dashboard_assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+  
+  <script>
+    $('#categoryform_modal').on('shown.bs.modal', function () {
+ // $('#myInput').trigger('focus')
+})
+
+ function deLete(id,routeUrl){
+   //alert(routeUrl);
+Swal.fire({
+  title: 'Do you want to delete?',
+  showCancelButton: true,
+  confirmButtonText: 'Yes',
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+        $.ajax({
+               type:'GET',
+               url:routeUrl,
+               //data:{'_tosken' : <php echo csrf_token() ?>, 'id':id},
+               data:{'id':id},
+               success:function(data) {
+                  //$("#msg").html(data.msg);
+                  $('#'+id).remove();
+                  Swal.fire('deleted Sucess!!', '', 'success')
+               }
+            });    
+  } 
+})
+}
+
+//<!------insert------>
+function Insert(id,routeUrl,update){
+    if($("#quantity").val()>=0){
+        var quantity=$("#quantity").val();
+    }
+    else{
+        var quantity=1;
+    }
+    Swal.fire({
+  title: 'Do you want to Add to Cart?',
+  showCancelButton: true,
+  confirmButtonText: 'Yes',
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+        $.ajax({
+               type:'GET',
+               url:routeUrl,
+               //data:{'_token' : <php echo csrf_token() ?>, 'id':id},
+               data:{'product_id':id,'quantity':quantity,'update':update},
+               success:function(data) {   
+                  var count=parseInt($("#numberOfCart").text());             
+                  $("#numberOfCart").html(count+1);
+                  //$('#'+id).remove();
+                  Swal.fire('Added Sucess!!', '', 'success')
+               }
+            });    
+  } 
+})
+}
+</script>
+
 </body>
 
 </html>

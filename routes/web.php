@@ -9,6 +9,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminJobController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 
  
@@ -45,10 +47,23 @@ Route::get('comming-soon', function () {
 });
 
 //Backend
-Route::get('admin/job',[AdminJobController::class,'index']);
-Route::get('admin/add-job',[AdminJobController::class,'AddJob']);
+Route::get('admin/job',[JobController::class,'index']);
+Route::get('admin/form-job',[JobController::class,'form']);
+Route::post('admin/add-job',[JobController::class,'AddJob']);
+Route::get('admin/delete-job',[JobController::class,'delete']);
+
 
 Route::get('admin/users',[UserController::class,'index']);
 Route::get('admin/add-users',[UserController::class,'AddUser']);
+
+Route::get("admin/category",[CategoryController::class,'index']);
+Route::get("admin/delete-category",[CategoryController::class,'delete']);
+Route::post("admin/add-category",[CategoryController::class,'Add']);
+
+Route::get("admin/subcategory",[SubCategoryController::class,'index']);
+Route::post("admin/add-subcategory",[SubCategoryController::class,'Add']);
+Route::get("admin/delete-subcategory",[SubCategoryController::class,'delete']);
+
+
 
 require __DIR__.'/auth.php';
