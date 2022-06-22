@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
+    public function jobDetail(Request $req){
+        return view("home.job-details")->with(["jobs"=>Job::find($req['id']),"categories"=>Category::all()]);
+    }
     public function jobs(){
         //return "this is jobs";
         return view("home.jobs");
@@ -25,7 +28,7 @@ class JobController extends Controller
 
 
         $validated = $req->validate([
-        'name' => 'required',
+        'job_name' => 'required',
         'job_description' => 'required',
         'qualification' => 'required',
         'salary'=>'required',
@@ -37,7 +40,7 @@ class JobController extends Controller
                 //return($req->file('image'));
                 $file= $req->file('job_image');
                 $job_image = date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('job_image'), $job_image);
+                $file-> move(public_path('/images/job_image'), $job_image);
        }
        else{
            
@@ -51,6 +54,7 @@ class JobController extends Controller
        else{
                 $company_image = null;
        }
+       
        //return $company_image.":[]:".$job_image;
        $job = Job::updateOrCreate(
             ['id' => $req['id']],

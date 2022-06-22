@@ -9,4 +9,15 @@
     @include("home.happy-clients")
     @include("home.email-me")
     @include("home.footer")
+    @if(Session::has('message'))
+            <script>
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: '{{Session::get('message')}}',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+            </script>
+        @endifs
 @endsection

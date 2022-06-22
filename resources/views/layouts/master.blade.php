@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   </head>
 
@@ -45,6 +47,7 @@
     @yield("about-us")
     @yield("blog")
     @yield("contact")
+    @yield("job-details")
 
     <!---banner--->
     

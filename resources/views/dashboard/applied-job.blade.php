@@ -15,62 +15,50 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Company name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Job Title</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Salary</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Minimum Qualification</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Country</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">description</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total vacency</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Job Category</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Subcategory</th>
-                      
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Client Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Client Number</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Client email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Job name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Company Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Salary</th>                      
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
         
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($jobs as $job)
+                    @foreach($applied_jobs as $applied_job)
                     <!---table row---->
-                    <tr id="{{$job['id']}}">
+                    <tr id="{{$applied_job['id']}}">
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
                             <img src="../dashboard_assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{$job->company_name}}</h6>
+                            <h6 class="mb-0 text-sm">{{$applied_job->name}}</h6>
                           </div>
                         </div>
                       </td>
                       <td>
-                            <span class="text-xs font-weight-bold">{{$job->name}}</span>
+                            <span class="text-xs font-weight-bold">{{$applied_job->number}}</span>
                       </td>
                       <td>
-                           <img src="/images/job_image/{{$job->job_image}}" width=50px height=50pxs>
+                            <span class="text-xs font-weight-bold">{{$applied_job->email}}</span>
                       </td>
                       <td>
-                            <span class="text-xs font-weight-bold">{{$job->salary}}</span>
+                            <span class="text-xs font-weight-bold">{{$applied_job->address}}</span>
                       </td>
                       <td>
-                            <span class="text-xs font-weight-bold">{{$job->qualification}}</span>
+                            <span class="text-xs font-weight-bold">{{$applied_job->getJobDetail->name}}</span>
                       </td>
                       <td>
-                            <span class="text-xs font-weight-bold">{{$job->country}}</span>
+                            <span class="text-xs font-weight-bold">{{$applied_job->getJobDetail->company_name}}</span>
                       </td>
                       <td>
-                            <span class="text-xs font-weight-bold">{{substr($job->job_description, 0, 100)}}</span>
+                            <span class="text-xs font-weight-bold">{{$applied_job->getJobDetail->salary}}</span>
                       </td>
-                      <td>
-                            <span class="text-xs font-weight-bold">{{$job->number_of_required_post}}</span>
-                      </td>
-                      <td>
-                            <span class="text-xs font-weight-bold">{{$job->category_id}}</span>
-                      </td>
-                      <td>
-                            <span class="text-xs font-weight-bold">{{$job->subcategory_id}}</span>
-                      </td>
+            
                       
                       <td class="align-middle text-center text-sm">
                           <div class="btn-group" style="position:static;">
@@ -79,7 +67,7 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><button class="dropdown-item" onclick="deLete('{{$job['id']}}','/admin/delete-job')" data="/admin/delete-subcategory?id=$subcategory['id']s">Delete</a></li>
+                                    <li><button class="dropdown-item" onclick="deLete('{{$applied_job['id']}}','/admin/delete-applied-job')" data="/admin/delete-subcategory?id=$subcategory['id']s">Delete</a></li>
                                     <!---<li><a class="dropdown-item" href="#">Something else here</a></li>--->
                                 </ul>
                          </div>

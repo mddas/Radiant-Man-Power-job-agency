@@ -37,29 +37,29 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Password</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">sender Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">subject</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">message</th>
         
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($users as $user)
+                    @foreach($messages as $message)
                     <!---table row---->
-                    <tr id="{{$user['id']}}">
+                    <tr id="{{$message['id']}}">
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <!--<img src="/images/about/$user->image" class="avatar avatar-sm me-3" alt="xd">---->
+                            <img src="../dashboard_assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{$user->name}}</h6>
+                            <h6 class="mb-0 text-sm">{{$message->name}}</h6>
                           </div>
                         </div>
                       </td>
                       <td>
-                            <span class="text-xs font-weight-bold">{{$user->email}}</span>
+                            <span class="text-xs font-weight-bold">{{$message->email}}</span>
                           <!----
                         <div class="avatar-group mt-2">
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
@@ -79,7 +79,7 @@
 
                       </td>
                       <td>
-                        <span class="text-xs font-weight-bold">{{$user->password}}</span>
+                        <span class="text-xs font-weight-bold">{{$message->subject}}</span>
                       </td>
                       <td class="align-middle text-center text-sm">
                           <div class="btn-group" style="position:static;">
@@ -88,7 +88,7 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><button class="dropdown-item" onclick="deLete('{{$user->id}}','/admin/delete-user')" >Delete</button></li>
+                                    <li><button class="dropdown-item" onclick="deLete('{{$message->id}}','/admin/delete-message')" >Delete</button></li>
                                     <!---<li><a class="dropdown-item" href="#">Something else here</a></li>--->
                                 </ul>
                          </div>

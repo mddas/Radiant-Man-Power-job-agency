@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Contact;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Session;
 
@@ -9,7 +10,8 @@ class ContactController extends Controller
 {
  
    public function contact(){
-       return view("home.contact");
+       return view("home.contact")->with(["categories"=>Category::all(),"contacts"=>Contact::All()->last()]);
+
    }
    public function index(){//this is for admin
         return view("dashboard.contact")->with(["contacts"=>Contact::all()]);
