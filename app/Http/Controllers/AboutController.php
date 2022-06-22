@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 use App\Models\About;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Session;
 
 class AboutController extends Controller
 {
     public function about(){
-        return view("home.about-us");
+        
+        return view("home.about-us")->with(["categories"=>Category::all(),"abouts"=>About::All()->last()]);
     }
     public function index(){
         return view("dashboard.about")->with(["abouts"=>About::all()]);
@@ -30,7 +32,7 @@ class AboutController extends Controller
                 //return($req->file('image'));
                 $file= $req->file('image');
                 $imagename = date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('about'), $imagename);
+                $file-> move(public_path('/images/about'), $imagename);
        }
        else{
            

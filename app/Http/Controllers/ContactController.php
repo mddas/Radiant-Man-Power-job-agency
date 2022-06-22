@@ -27,7 +27,7 @@ class ContactController extends Controller
                 //return($req->file('image'));
                 $file= $req->file('manager_image');
                 $imagename = date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('contact'), $imagename);
+                $file-> move(public_path('/images/contact'), $imagename);
        }
        else{
            
